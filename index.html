@@ -31,27 +31,22 @@
         }
 
         /* ----- หน้า 1: เข้าสู่ระบบ ----- */
-        .login-wrap {
-            text-align: center;
-            background: linear-gradient(135deg, #74ebe5 0%, #899fd4 100%);
-            padding: 20px;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-        }
-
         .header {
             background: linear-gradient(to bottom, #8ee3f5, #e0f7fa);
             padding: 25px 20px 15px 20px;
             text-align: center;
         }
 
-        .lotus-icon {
-            font-size: 50px;
-            line-height: 1;
-            margin-bottom: 5px;
+        .school-logo-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .school-svg-header {
+            width: 90px;
+            height: 90px;
         }
 
         .title-green {
@@ -147,7 +142,6 @@
             background: #fdfdfd;
         }
 
-        /* ข้อมูลนักเรียน Header */
         .section-header {
             background: #555555;
             color: white;
@@ -160,19 +154,22 @@
 
         .student-info-grid {
             display: grid;
-            grid-template-columns: 120px 1fr;
+            grid-template-columns: 110px 1fr;
             gap: 10px;
             align-items: center;
             margin-bottom: 15px;
         }
 
-        .lotus-logo-wrap {
+        .logo-box-wrap {
             text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .lotus-svg {
-            width: 80px;
-            height: 80px;
+        .school-svg-result {
+            width: 85px;
+            height: 85px;
         }
 
         .info-fields {
@@ -203,7 +200,6 @@
             color: #222;
         }
 
-        /* ตารางเกรด */
         .table-responsive {
             overflow-x: auto;
             margin-bottom: 15px;
@@ -246,7 +242,6 @@
             font-weight: bold;
         }
 
-        /* สรุปผลการเรียน */
         .summary-box {
             width: 280px;
             border: 1px solid #ccc;
@@ -303,7 +298,7 @@
             .student-info-grid {
                 grid-template-columns: 1fr;
             }
-            .lotus-logo-wrap {
+            .logo-box-wrap {
                 margin-bottom: 5px;
             }
         }
@@ -314,7 +309,48 @@
     <!-- หน้า 1: ล็อกอิน -->
     <div id="search-page" class="container">
         <div class="header">
-            <div class="lotus-icon">🪷</div>
+            <div class="school-logo-wrap">
+                <!-- ตราโรงเรียนมุกดาหาร SVG -->
+                <svg class="school-svg-header" viewBox="0 0 200 200">
+                    <circle cx="100" cy="100" r="96" fill="#5cb85c"/>
+                    <circle cx="100" cy="100" r="68" fill="#1b2a72"/>
+                    <!-- เพชรและรัศมี -->
+                    <g fill="#ffd700">
+                        <polygon points="100,75 135,75 148,90 100,128 52,90 65,75"/>
+                        <polyline points="52,90 100,75 148,90" fill="none" stroke="#1b2a72" stroke-width="2"/>
+                        <line x1="65" y1="75" x2="78" y2="90" stroke="#1b2a72" stroke-width="2"/>
+                        <line x1="135" y1="75" x2="122" y2="90" stroke="#1b2a72" stroke-width="2"/>
+                        <line x1="100" y1="75" x2="100" y2="128" stroke="#1b2a72" stroke-width="2"/>
+                        <line x1="78" y1="90" x2="100" y2="128" stroke="#1b2a72" stroke-width="2"/>
+                        <line x1="122" y1="90" x2="100" y2="128" stroke="#1b2a72" stroke-width="2"/>
+                        <!-- รัศมี -->
+                        <path d="M100,40 L104,65 L100,65 Z M85,44 L92,67 L88,68 Z M115,44 L112,68 L108,67 Z M71,53 L81,71 L77,73 Z M129,53 L123,73 L119,71 Z M60,65 L73,78 L69,82 Z M140,65 L131,82 L127,78 Z M52,80 L67,87 L65,91 Z M148,80 L135,91 L133,87 Z M48,96 L65,98 L64,102 Z M152,96 L136,102 L135,98 Z M49,112 L66,108 L67,112 Z M151,112 L133,112 L134,108 Z M55,127 L70,118 L72,122 Z M145,127 L128,122 L130,118 Z"/>
+                    </g>
+                    <!-- เมฆ / มือรองรับ -->
+                    <path d="M50,118 Q70,105 90,122 Q100,110 110,122 Q130,105 150,118 Q160,132 140,145 Q120,165 100,162 Q80,165 60,145 Q40,132 50,118 Z" fill="none" stroke="#ffd700" stroke-width="3"/>
+                    <path d="M60,140 Q100,175 140,140" fill="none" stroke="#ffd700" stroke-width="3"/>
+                    <!-- ดอกไม้ซ้ายขวา -->
+                    <g fill="#e53935">
+                        <path d="M28,100 Q18,90 28,80 Q38,90 28,100 Z M28,100 Q18,110 28,120 Q38,110 28,100 Z M28,100 Q18,100 8,100 Q18,100 28,100 Z M28,100 Q38,100 48,100 Q38,100 28,100 Z"/>
+                        <circle cx="28" cy="100" r="4" fill="#ffd700"/>
+                        <path d="M172,100 Q162,90 172,80 Q182,90 172,100 Z M172,100 Q162,110 172,120 Q182,110 172,100 Z M172,100 Q162,100 152,100 Q162,100 172,100 Z M172,100 Q182,100 192,100 Q182,100 172,100 Z"/>
+                        <circle cx="172" cy="100" r="4" fill="#ffd700"/>
+                    </g>
+                    <!-- ข้อความโค้งรอบนอก -->
+                    <path id="textPathTopHeader" d="M 30,100 A 70,70 0 0,1 170,100" fill="none"/>
+                    <path id="textPathBottomHeader" d="M 170,100 A 70,70 0 0,1 30,100" fill="none"/>
+                    <text fill="#ffffff" font-size="16" font-weight="bold">
+                        <textPath href="#textPathTopHeader" startOffset="50%" text-anchor="middle">
+                            วิชฺชา วรํ ธนํ โชติ
+                        </textPath>
+                    </text>
+                    <text fill="#ffffff" font-size="18" font-weight="bold">
+                        <textPath href="#textPathBottomHeader" startOffset="50%" text-anchor="middle">
+                            โรงเรียนมุกดาหาร
+                        </textPath>
+                    </text>
+                </svg>
+            </div>
             <div class="title-green">DoGrade 2569</div>
             <div class="title-sub">มุกดาหาร</div>
             
@@ -357,16 +393,41 @@
         <div class="section-header">ข้อมูลนักเรียน</div>
         
         <div class="student-info-grid">
-            <div class="lotus-logo-wrap">
-                <!-- โลโก้ดอกบัว -->
-                <svg class="lotus-svg" viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="45" fill="none" stroke="#e0e0e0" stroke-width="2"/>
-                    <path d="M50,20 C40,35 35,50 50,75 C65,50 60,35 50,20 Z" fill="#ffffff" stroke="#d32f2f" stroke-width="2"/>
-                    <path d="M50,25 C30,40 20,55 35,75 C45,65 48,55 50,25 Z" fill="#ffffff" stroke="#d32f2f" stroke-width="2"/>
-                    <path d="M50,25 C70,40 80,55 65,75 C55,65 52,55 50,25 Z" fill="#ffffff" stroke="#d32f2f" stroke-width="2"/>
-                    <path d="M50,35 C20,50 10,65 25,78 C40,75 45,65 50,35 Z" fill="#ffffff" stroke="#d32f2f" stroke-width="2"/>
-                    <path d="M50,35 C80,50 90,65 75,78 C60,75 55,65 50,35 Z" fill="#ffffff" stroke="#d32f2f" stroke-width="2"/>
-                    <path d="M20,78 Q50,90 80,78 Q50,82 20,78 Z" fill="#ffffff" stroke="#d32f2f" stroke-width="2"/>
+            <div class="logo-box-wrap">
+                <!-- ตราโรงเรียนมุกดาหาร SVG สำหรับส่วนแสดงผล -->
+                <svg class="school-svg-result" viewBox="0 0 200 200">
+                    <circle cx="100" cy="100" r="96" fill="#5cb85c"/>
+                    <circle cx="100" cy="100" r="68" fill="#1b2a72"/>
+                    <g fill="#ffd700">
+                        <polygon points="100,75 135,75 148,90 100,128 52,90 65,75"/>
+                        <polyline points="52,90 100,75 148,90" fill="none" stroke="#1b2a72" stroke-width="2"/>
+                        <line x1="65" y1="75" x2="78" y2="90" stroke="#1b2a72" stroke-width="2"/>
+                        <line x1="135" y1="75" x2="122" y2="90" stroke="#1b2a72" stroke-width="2"/>
+                        <line x1="100" y1="75" x2="100" y2="128" stroke="#1b2a72" stroke-width="2"/>
+                        <line x1="78" y1="90" x2="100" y2="128" stroke="#1b2a72" stroke-width="2"/>
+                        <line x1="122" y1="90" x2="100" y2="128" stroke="#1b2a72" stroke-width="2"/>
+                        <path d="M100,40 L104,65 L100,65 Z M85,44 L92,67 L88,68 Z M115,44 L112,68 L108,67 Z M71,53 L81,71 L77,73 Z M129,53 L123,73 L119,71 Z M60,65 L73,78 L69,82 Z M140,65 L131,82 L127,78 Z M52,80 L67,87 L65,91 Z M148,80 L135,91 L133,87 Z M48,96 L65,98 L64,102 Z M152,96 L136,102 L135,98 Z M49,112 L66,108 L67,112 Z M151,112 L133,112 L134,108 Z M55,127 L70,118 L72,122 Z M145,127 L128,122 L130,118 Z"/>
+                    </g>
+                    <path d="M50,118 Q70,105 90,122 Q100,110 110,122 Q130,105 150,118 Q160,132 140,145 Q120,165 100,162 Q80,165 60,145 Q40,132 50,118 Z" fill="none" stroke="#ffd700" stroke-width="3"/>
+                    <path d="M60,140 Q100,175 140,140" fill="none" stroke="#ffd700" stroke-width="3"/>
+                    <g fill="#e53935">
+                        <path d="M28,100 Q18,90 28,80 Q38,90 28,100 Z M28,100 Q18,110 28,120 Q38,110 28,100 Z M28,100 Q18,100 8,100 Q18,100 28,100 Z M28,100 Q38,100 48,100 Q38,100 28,100 Z"/>
+                        <circle cx="28" cy="100" r="4" fill="#ffd700"/>
+                        <path d="M172,100 Q162,90 172,80 Q182,90 172,100 Z M172,100 Q162,110 172,120 Q182,110 172,100 Z M172,100 Q162,100 152,100 Q162,100 172,100 Z M172,100 Q182,100 192,100 Q182,100 172,100 Z"/>
+                        <circle cx="172" cy="100" r="4" fill="#ffd700"/>
+                    </g>
+                    <path id="textPathTopResult" d="M 30,100 A 70,70 0 0,1 170,100" fill="none"/>
+                    <path id="textPathBottomResult" d="M 170,100 A 70,70 0 0,1 30,100" fill="none"/>
+                    <text fill="#ffffff" font-size="16" font-weight="bold">
+                        <textPath href="#textPathTopResult" startOffset="50%" text-anchor="middle">
+                            วิชฺชา วรํ ธนํ โชติ
+                        </textPath>
+                    </text>
+                    <text fill="#ffffff" font-size="18" font-weight="bold">
+                        <textPath href="#textPathBottomResult" startOffset="50%" text-anchor="middle">
+                            โรงเรียนมุกดาหาร
+                        </textPath>
+                    </text>
                 </svg>
             </div>
             
