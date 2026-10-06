@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบเช็กผลการเรียนประจำปีการศึกษา</title>
+    <style>
+        * { box-sizing: border-box; font-family: 'Tahoma', sans-serif; }
+        body {
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+        }
+        h2 { color: #1a73e8; margin-bottom: 15px; margin-top: 5px; }
+        .input-group { text-align: left; margin-bottom: 15px; }
+        label { display: block; font-size: 14px; color: #666; margin-bottom: 5px; }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        button:hover { background-color: #1557b0; }
+        .hidden { display: none; }
+        .messi-img { 
+            width: 100%; 
+            max-height: 480px;
+            object-fit: cover;
+            border-radius: 8px; 
+            margin-top: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- หน้าที่ 1: หน้าฟอร์มหลอก -->
+    <div id="page1" class="card">
+        <h2>ระบบตรวจสอบผลการเรียน</h2>
+        <p style="color: #666; font-size: 13px; margin-bottom: 20px;">กรุณากรอกข้อมูลเพื่อเข้าสู่ระบบ</p>
+        <form id="checkForm">
+            <div class="input-group">
+                <label for="studentId">รหัสนักเรียน</label>
+                <input type="number" id="studentId" placeholder="เช่น 12345" required>
+            </div>
+            <div class="input-group">
+                <label for="dob">วัน/เดือน/ปี เกิด</label>
+                <input type="date" id="dob" required>
+            </div>
+            <button type="submit">ค้นหาข้อมูล</button>
+        </form>
+    </div>
+
+    <!-- หน้าที่ 2: แสดงรูปเมสซี่จูบถ้วย -->
+    <div id="page2" class="card hidden">
+        <h2 style="color: #2e7d32; margin-bottom: 5px;">🏆 GOAT 🇦🇷</h2>
+        <p style="color: #555; margin-top: 0; font-size: 14px;">ยินดีด้วย! คุณพบกับแชมป์โลกตัวจริง</p>
+        
+        <!-- รูปเมสซี่จูบถ้วยฟุตบอลโลก -->
+        <img src="https://i.ibb.co/3kWKkS1/messi-worldcup.jpg" 
+             onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/b/b4/Lionel-Messi-Argentina-2022-FIFA-World-Cup_Argentina_vs_France.jpg'"
+             alt="Lionel Messi World Cup" class="messi-img">
+        
+        <button onclick="location.reload()" style="background-color: #757575;">กลับหน้าแรก</button>
+    </div>
+
+    <script>
+        document.getElementById('checkForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // ป้องกันไม่ให้รีเฟรชหน้า
+            document.getElementById('page1').classList.add('hidden');
+            document.getElementById('page2').classList.remove('hidden');
+        });
+    </script>
+
+</body>
+</html>
