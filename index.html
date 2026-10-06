@@ -13,29 +13,39 @@
         }
 
         body {
-            background: linear-gradient(135deg, #74ebe5 0%, #899fd4 100%);
+            background: #eef2f5;
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             padding: 15px;
         }
 
         .container {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
             width: 100%;
-            max-width: 450px;
+            max-width: 650px;
             overflow: hidden;
-            text-align: center;
         }
 
-        /* หน้าแรก */
+        /* ----- หน้า 1: เข้าสู่ระบบ ----- */
+        .login-wrap {
+            text-align: center;
+            background: linear-gradient(135deg, #74ebe5 0%, #899fd4 100%);
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
         .header {
             background: linear-gradient(to bottom, #8ee3f5, #e0f7fa);
             padding: 25px 20px 15px 20px;
-            position: relative;
+            text-align: center;
         }
 
         .lotus-icon {
@@ -46,26 +56,27 @@
 
         .title-green {
             color: #2e7d32;
-            font-size: 32px;
+            font-size: 30px;
             font-weight: bold;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
         .title-sub {
             color: #333;
-            font-size: 26px;
+            font-size: 24px;
             font-weight: bold;
             margin-bottom: 10px;
         }
 
         .welcome-box {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.75);
             border-radius: 8px;
             padding: 12px;
             margin: 10px 0;
-            font-size: 14px;
+            font-size: 13px;
             color: #444;
             line-height: 1.5;
+            text-align: center;
         }
 
         .form-section {
@@ -74,11 +85,8 @@
         }
 
         .form-title {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            font-size: 18px;
+            text-align: center;
+            font-size: 17px;
             font-weight: bold;
             color: #2c3e50;
             margin-bottom: 15px;
@@ -91,7 +99,7 @@
 
         .input-group label {
             display: block;
-            font-size: 14px;
+            font-size: 13px;
             color: #555;
             margin-bottom: 4px;
             font-weight: bold;
@@ -99,15 +107,11 @@
 
         .input-group input {
             width: 100%;
-            padding: 10px 12px;
+            padding: 9px 12px;
             border: 1px solid #ccc;
             border-radius: 6px;
-            font-size: 15px;
+            font-size: 14px;
             outline: none;
-        }
-
-        .input-group input:focus {
-            border-color: #0288d1;
         }
 
         .error-message {
@@ -120,6 +124,7 @@
             margin-bottom: 12px;
             display: none;
             font-weight: bold;
+            text-align: center;
         }
 
         .btn-submit {
@@ -127,110 +132,594 @@
             background: #1976d2;
             color: white;
             border: none;
-            padding: 12px;
-            font-size: 16px;
+            padding: 11px;
+            font-size: 15px;
             font-weight: bold;
             border-radius: 6px;
             cursor: pointer;
-            margin-top: 5px;
             transition: background 0.2s;
         }
 
-        .btn-submit:hover {
-            background: #1565c0;
-        }
-
-        /* หน้าผลลัพธ์ */
+        /* ----- หน้า 2: ผลการเรียน ----- */
         #result-page {
             display: none;
-            padding: 20px;
+            padding: 15px;
+            background: #fdfdfd;
         }
 
-        .result-title {
-            color: #d32f2f;
-            font-size: 22px;
+        /* ข้อมูลนักเรียน Header */
+        .section-header {
+            background: #555555;
+            color: white;
+            padding: 6px 12px;
+            font-size: 15px;
             font-weight: bold;
+            text-align: center;
             margin-bottom: 10px;
         }
 
-        .result-desc {
-            font-size: 16px;
-            color: #333;
+        .student-info-grid {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 10px;
+            align-items: center;
             margin-bottom: 15px;
-            font-weight: bold;
-            line-height: 1.5;
         }
 
-        .classroom-img {
-            width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        .lotus-logo-wrap {
+            text-align: center;
+        }
+
+        .lotus-svg {
+            width: 80px;
+            height: 80px;
+        }
+
+        .info-fields {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            color: #333;
+        }
+
+        .info-label {
+            width: 110px;
+            font-weight: bold;
+        }
+
+        .info-value {
+            background: #eeeeee;
+            padding: 3px 10px;
+            border-radius: 3px;
+            border: 1px solid #ddd;
+            flex: 1;
+            font-size: 13px;
+            color: #222;
+        }
+
+        /* ตารางเกรด */
+        .table-responsive {
+            overflow-x: auto;
             margin-bottom: 15px;
+        }
+
+        .grade-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11.5px;
+            text-align: center;
+        }
+
+        .grade-table th, .grade-table td {
+            border: 1px solid #d0d0d0;
+            padding: 5px 3px;
+            white-space: nowrap;
+        }
+
+        .grade-table th {
+            background: #f2f2f2;
+            color: #333;
+            font-weight: bold;
+            font-size: 11px;
+        }
+
+        .grade-table tr:nth-child(even) {
+            background-color: #fcfcfc;
+        }
+
+        .grade-table tr:hover {
+            background-color: #f1f8ff;
+        }
+
+        .text-left {
+            text-align: left !important;
+            padding-left: 6px !important;
+        }
+
+        .font-bold {
+            font-weight: bold;
+        }
+
+        /* สรุปผลการเรียน */
+        .summary-box {
+            width: 280px;
+            border: 1px solid #ccc;
+            background: #fafafa;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .summary-header {
+            background: #666666;
+            color: white;
+            padding: 5px 10px;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .summary-body {
+            padding: 8px 12px;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .footer-credits {
+            margin-top: 15px;
+            font-size: 11px;
+            color: #666;
+            text-align: left;
+            line-height: 1.3;
+        }
+
+        .btn-back-wrap {
+            text-align: center;
+            margin-top: 20px;
         }
 
         .btn-back {
-            background: #757575;
+            background: #666;
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
+            padding: 8px 20px;
+            border-radius: 4px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 13px;
+        }
+
+        @media (max-width: 480px) {
+            .student-info-grid {
+                grid-template-columns: 1fr;
+            }
+            .lotus-logo-wrap {
+                margin-bottom: 5px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- หน้า 1: กรอกรหัส -->
-        <div id="search-page">
-            <div class="header">
-                <div class="lotus-icon">🪷</div>
-                <div class="title-green">DoGrade 2569</div>
-                <div class="title-sub">มุกดาหาร</div>
-                
-                <div class="welcome-box">
-                    Welcome Back to School 2568<br>
-                    ระบบ DoGrade2567 Online<br>
-                    เพื่อการตรวจสอบผลการเรียนและการติดต่องานทะเบียน 24 ชั่วโมง<br>
-                    <small>หากมีข้อสงสัยผลการเรียนให้ติดต่อครูผู้สอนประจำวิชา .....</small>
-                </div>
-            </div>
-
-            <div class="form-section">
-                <div class="form-title">
-                    🎓 บันทึกรหัสที่ขอ DoGrade
-                </div>
-                
-                <form id="gradeForm">
-                    <div class="input-group">
-                        <label>รหัสนักเรียน / ผู้ปกครอง:</label>
-                        <input type="text" id="studentId" placeholder="XXXXXXX" required>
-                    </div>
-                    <div class="input-group">
-                        <label>วันเกิดนักเรียน:</label>
-                        <input type="text" id="birthDate" placeholder="วว/ดด/ปปปป" required>
-                    </div>
-
-                    <!-- กล่องแสดงข้อความเตือนเมื่อกรอกผิด -->
-                    <div id="errorMessage" class="error-message">
-                        ❌ ไม่พบข้อมูลนักเรียนคนนี้ในระบบ กรุณาตรวจสอบรหัสนักเรียนและวันเกิดอีกครั้ง
-                    </div>
-
-                    <button type="submit" class="btn-submit">ตรวจสอบผลการเรียน</button>
-                </form>
+    <!-- หน้า 1: ล็อกอิน -->
+    <div id="search-page" class="container">
+        <div class="header">
+            <div class="lotus-icon">🪷</div>
+            <div class="title-green">DoGrade 2569</div>
+            <div class="title-sub">มุกดาหาร</div>
+            
+            <div class="welcome-box">
+                Welcome Back to School 2568<br>
+                ระบบ DoGrade2567 Online<br>
+                เพื่อการตรวจสอบผลการเรียนและการติดต่องานทะเบียน 24 ชั่วโมง<br>
+                <small>หากมีข้อสงสัยผลการเรียนให้ติดต่อครูผู้สอนประจำวิชา .....</small>
             </div>
         </div>
 
-        <!-- หน้า 2: หน้าผลลัพธ์ -->
-        <div id="result-page">
-            <div class="result-title">⚠️ ไม่พบผลการเรียน!</div>
-            <div class="result-desc">เกรดของคุณถูกลบออกจากระบบแล้ว...<br>กรุณาซ้ำชั้นที่ห้องนี้ครับ 😭</div>
+        <div class="form-section">
+            <div class="form-title">
+                🎓 บันทึกรหัสที่ขอ DoGrade
+            </div>
             
-            <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=1000&auto=format&fit=crop" alt="ห้องเรียนว่างเปล่า" class="classroom-img">
+            <form id="gradeForm">
+                <div class="input-group">
+                    <label>รหัสนักเรียน / ผู้ปกครอง:</label>
+                    <input type="text" id="studentId" placeholder="XXXXXXX" required>
+                </div>
+                <div class="input-group">
+                    <label>วันเกิดนักเรียน:</label>
+                    <input type="text" id="birthDate" placeholder="วว/ดด/ปปปป" required>
+                </div>
 
+                <div id="errorMessage" class="error-message">
+                    ❌ ไม่พบข้อมูลนักเรียนคนนี้ในระบบ กรุณาตรวจสอบรหัสนักเรียนและวันเกิดอีกครั้ง
+                </div>
+
+                <button type="submit" class="btn-submit">ตรวจสอบผลการเรียน</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- หน้า 2: ตารางแสดงผลการเรียน -->
+    <div id="result-page" class="container">
+        
+        <!-- ส่วนหัว: ข้อมูลนักเรียน -->
+        <div class="section-header">ข้อมูลนักเรียน</div>
+        
+        <div class="student-info-grid">
+            <div class="lotus-logo-wrap">
+                <!-- โลโก้ดอกบัว -->
+                <svg class="lotus-svg" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="#e0e0e0" stroke-width="2"/>
+                    <path d="M50,20 C40,35 35,50 50,75 C65,50 60,35 50,20 Z" fill="#ffffff" stroke="#d32f2f" stroke-width="2"/>
+                    <path d="M50,25 C30,40 20,55 35,75 C45,65 48,55 50,25 Z" fill="#ffffff" stroke="#d32f2f" stroke-width="2"/>
+                    <path d="M50,25 C70,40 80,55 65,75 C55,65 52,55 50,25 Z" fill="#ffffff" stroke="#d32f2f" stroke-width="2"/>
+                    <path d="M50,35 C20,50 10,65 25,78 C40,75 45,65 50,35 Z" fill="#ffffff" stroke="#d32f2f" stroke-width="2"/>
+                    <path d="M50,35 C80,50 90,65 75,78 C60,75 55,65 50,35 Z" fill="#ffffff" stroke="#d32f2f" stroke-width="2"/>
+                    <path d="M20,78 Q50,90 80,78 Q50,82 20,78 Z" fill="#ffffff" stroke="#d32f2f" stroke-width="2"/>
+                </svg>
+            </div>
+            
+            <div class="info-fields">
+                <div class="info-row">
+                    <span class="info-label">เลขประจำตัว</span>
+                    <span class="info-value">31356</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">ชื่อ-สกุล</span>
+                    <span class="info-value">นายอรรคพล ปานะวงค์</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">ห้อง</span>
+                    <span class="info-value">9</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">เลขที่</span>
+                    <span class="info-value">6</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- หัวข้อภาคเรียน -->
+        <div class="section-header">ผลการเรียนชั้นมัธยมศึกษาปีที่ 6 ภาคเรียนที่ 1</div>
+
+        <!-- ตารางวิชา -->
+        <div class="table-responsive">
+            <table class="grade-table">
+                <thead>
+                    <tr>
+                        <th>รหัสวิชา</th>
+                        <th>รายวิชา</th>
+                        <th>ประเภท</th>
+                        <th>หน่วยกิต</th>
+                        <th>คะแนนรวมหน่วย</th>
+                        <th>กลางภาค</th>
+                        <th>ปลายภาค</th>
+                        <th>รวมคะแนน</th>
+                        <th>ระดับคะแนน</th>
+                        <th>แก้ตัว</th>
+                        <th>คุณลักษณะ</th>
+                        <th>อ่านคิดวิเคราะห์</th>
+                        <th>ครูผู้สอน</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ท33101</td>
+                        <td class="text-left">ภาษาไทยพื้นฐาน</td>
+                        <td>1</td>
+                        <td>1.0</td>
+                        <td>33</td>
+                        <td>18</td>
+                        <td>17</td>
+                        <td>68</td>
+                        <td class="font-bold">2.5</td>
+                        <td></td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>ศรีสบนา</td>
+                    </tr>
+                    <tr>
+                        <td>ค33107</td>
+                        <td class="text-left">คณิตศาสตร์พื้นฐาน</td>
+                        <td>1</td>
+                        <td>1.0</td>
+                        <td>32</td>
+                        <td>30</td>
+                        <td>30</td>
+                        <td>92</td>
+                        <td class="font-bold">4</td>
+                        <td></td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>พานตะวัน</td>
+                    </tr>
+                    <tr>
+                        <td>ว30104</td>
+                        <td class="text-left">วิทยาศาสตร์กายภาพ</td>
+                        <td>1</td>
+                        <td>1.0</td>
+                        <td>36</td>
+                        <td>28</td>
+                        <td>20</td>
+                        <td>84</td>
+                        <td class="font-bold">4</td>
+                        <td></td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>สมถวิล</td>
+                    </tr>
+                    <tr>
+                        <td>ส33181</td>
+                        <td class="text-left">ภูมิศาสตร์</td>
+                        <td>1</td>
+                        <td>1.0</td>
+                        <td>30</td>
+                        <td>21</td>
+                        <td>22</td>
+                        <td>74</td>
+                        <td class="font-bold">3</td>
+                        <td></td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>บูรินทร์พร</td>
+                    </tr>
+                    <tr>
+                        <td>พ33102</td>
+                        <td class="text-left">ลีลาศ</td>
+                        <td>1</td>
+                        <td>0.5</td>
+                        <td>48</td>
+                        <td>12</td>
+                        <td>17</td>
+                        <td>77</td>
+                        <td class="font-bold">3.5</td>
+                        <td></td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>กิตติพ้ฒน์</td>
+                    </tr>
+                    <tr>
+                        <td>ศ30121</td>
+                        <td class="text-left">ดนตรี</td>
+                        <td>1</td>
+                        <td>0.5</td>
+                        <td>35</td>
+                        <td>15</td>
+                        <td>18</td>
+                        <td>68</td>
+                        <td class="font-bold">2.5</td>
+                        <td></td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>ชวลิต</td>
+                    </tr>
+                    <tr>
+                        <td>อ33101</td>
+                        <td class="text-left">ภาษาอังกฤษพื้นฐาน</td>
+                        <td>1</td>
+                        <td>1.0</td>
+                        <td>44</td>
+                        <td>26</td>
+                        <td>23</td>
+                        <td>93</td>
+                        <td class="font-bold">4</td>
+                        <td></td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>อธิรวิชญ์</td>
+                    </tr>
+                    <tr>
+                        <td>ท30205</td>
+                        <td class="text-left">การพูดต่อหน้าที่ประชุมชน</td>
+                        <td>2</td>
+                        <td>1.0</td>
+                        <td>52</td>
+                        <td>18</td>
+                        <td>19</td>
+                        <td>89</td>
+                        <td class="font-bold">4</td>
+                        <td></td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>ศรีสบนา</td>
+                    </tr>
+                    <tr>
+                        <td>ว33281</td>
+                        <td class="text-left">วิทยาการคำนวณ</td>
+                        <td>2</td>
+                        <td>0.5</td>
+                        <td>47</td>
+                        <td>15</td>
+                        <td>15</td>
+                        <td>77</td>
+                        <td class="font-bold">3.5</td>
+                        <td></td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>จรรยาวรรณ</td>
+                    </tr>
+                    <tr>
+                        <td>ส30235</td>
+                        <td class="text-left">กฎหมาย</td>
+                        <td>2</td>
+                        <td>1.0</td>
+                        <td>32</td>
+                        <td>30</td>
+                        <td>34</td>
+                        <td>96</td>
+                        <td class="font-bold">4</td>
+                        <td></td>
+                        <td>3</td>
+                        <td>1</td>
+                        <td>ตรายวุธ</td>
+                    </tr>
+                    <tr>
+                        <td>อ33201</td>
+                        <td class="text-left">ภาษาอังกฤษเพื่อการสื่อสาร</td>
+                        <td>2</td>
+                        <td>1.0</td>
+                        <td>40</td>
+                        <td>25</td>
+                        <td>23</td>
+                        <td>88</td>
+                        <td class="font-bold">4</td>
+                        <td></td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>นลินี</td>
+                    </tr>
+                    <tr>
+                        <td>ญ33203</td>
+                        <td class="text-left">ภาษาญี่ปุ่นแบบเข้ม</td>
+                        <td>2</td>
+                        <td>2.0</td>
+                        <td>45</td>
+                        <td>20</td>
+                        <td>20</td>
+                        <td>85</td>
+                        <td class="font-bold">4</td>
+                        <td></td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>สิริกร</td>
+                    </tr>
+                    <tr>
+                        <td>ญ33205</td>
+                        <td class="text-left">การสอบวัดระดับทางภาษาญี่ปุ่น</td>
+                        <td>2</td>
+                        <td>2.0</td>
+                        <td>35</td>
+                        <td>25</td>
+                        <td>25</td>
+                        <td>85</td>
+                        <td class="font-bold">4</td>
+                        <td></td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>กิตติยากรณ์</td>
+                    </tr>
+                    <tr>
+                        <td>ญ33207</td>
+                        <td class="text-left">รอบรู้เรื่องญี่ปุ่น</td>
+                        <td>2</td>
+                        <td>1.0</td>
+                        <td>50</td>
+                        <td>15</td>
+                        <td>22</td>
+                        <td>87</td>
+                        <td class="font-bold">4</td>
+                        <td></td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>ฉัตรสุดา</td>
+                    </tr>
+                    <tr>
+                        <td>I30202</td>
+                        <td class="text-left">IS2 การสื่อสารและการนำเสนอ</td>
+                        <td>2</td>
+                        <td>1.0</td>
+                        <td>23</td>
+                        <td>22</td>
+                        <td>23</td>
+                        <td>68</td>
+                        <td class="font-bold">2.5</td>
+                        <td></td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>สิริกร</td>
+                    </tr>
+                    <tr>
+                        <td>ก33901</td>
+                        <td class="text-left">แนะแนว</td>
+                        <td>9</td>
+                        <td>0.0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>100</td>
+                        <td class="font-bold">ผ</td>
+                        <td></td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>วสวรรต</td>
+                    </tr>
+                    <tr>
+                        <td>ก33902</td>
+                        <td class="text-left">บ.พ./ล.ว./ร.ด.</td>
+                        <td>9</td>
+                        <td>0.0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>100</td>
+                        <td class="font-bold">ผ</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>บุญดี</td>
+                    </tr>
+                    <tr>
+                        <td>ก33904</td>
+                        <td class="text-left">กิจกรรมเพื่อสังคมและสาธารณประโยชน์</td>
+                        <td>9</td>
+                        <td>0.0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>100</td>
+                        <td class="font-bold">ผ</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>วุฒิมา</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- สรุปผลการเรียน -->
+        <div class="summary-box">
+            <div class="summary-header">สรุปผลการเรียนที่เรียน</div>
+            <div class="summary-body">
+                <div class="summary-row">
+                    <span>จำนวนหน่วยกิตวิชาพื้นฐานที่เรียน</span>
+                    <span>6.0</span>
+                </div>
+                <div class="summary-row">
+                    <span>จำนวนหน่วยกิตวิชาเพิ่มเติมที่เรียน</span>
+                    <span>6.5</span>
+                </div>
+                <div class="summary-row">
+                    <span>รวมจำนวนหน่วยกิตที่เรียน</span>
+                    <span>12.5</span>
+                </div>
+                <div class="summary-row font-bold">
+                    <span>ผลการเรียนเฉลี่ย GPA</span>
+                    <span>3.63</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-credits">
+            Semester Web Module from Secondary'63 Program Design By<br>
+            Amporn Chomdej [WeSchool Team]
+        </div>
+
+        <div class="btn-back-wrap">
             <button type="button" class="btn-back" onclick="goBack()">กลับหน้าแรก</button>
         </div>
+
     </div>
 
     <script>
@@ -241,7 +730,6 @@
             const birthDate = document.getElementById('birthDate').value.trim();
             const errorMessage = document.getElementById('errorMessage');
 
-            // ตรวจสอบข้อมูลรหัสนักเรียนและวันเกิด
             if (studentId === '31356' && birthDate === '08/11/2551') {
                 errorMessage.style.display = 'none';
                 document.getElementById('search-page').style.display = 'none';
