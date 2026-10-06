@@ -3,97 +3,230 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ระบบเช็กผลการเรียนประจำปีการศึกษา</title>
+    <title>DoGrade 2569 - ระบบตรวจสอบผลการเรียน</title>
     <style>
-        * { box-sizing: border-box; font-family: 'Tahoma', sans-serif; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Sarabun', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
         body {
-            background-color: #f0f2f5;
+            background: linear-gradient(135deg, #74ebe5 0%, #899fd4 100%);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
+            padding: 15px;
         }
-        .card {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
             width: 100%;
-            max-width: 420px;
+            max-width: 450px;
+            overflow: hidden;
             text-align: center;
         }
-        h2 { color: #1a73e8; margin-bottom: 15px; margin-top: 5px; }
-        .input-group { text-align: left; margin-bottom: 15px; }
-        label { display: block; font-size: 14px; color: #666; margin-bottom: 5px; }
-        input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 16px;
+
+        /* หน้าแรก */
+        .header {
+            background: linear-gradient(to bottom, #8ee3f5, #e0f7fa);
+            padding: 25px 20px 15px 20px;
+            position: relative;
         }
-        button {
-            width: 100%;
+
+        .lotus-icon {
+            font-size: 50px;
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+
+        .title-green {
+            color: #2e7d32;
+            font-size: 32px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .title-sub {
+            color: #333;
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .welcome-box {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
             padding: 12px;
-            background-color: #1a73e8;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 10px;
+            margin: 10px 0;
+            font-size: 14px;
+            color: #444;
+            line-height: 1.5;
+        }
+
+        .form-section {
+            padding: 20px;
+            background: #f9fbfd;
+        }
+
+        .form-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .input-group {
+            margin-bottom: 12px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 4px;
             font-weight: bold;
         }
-        button:hover { background-color: #1557b0; }
-        .hidden { display: none; }
-        .messi-img { 
-            width: 100%; 
-            max-height: 480px;
-            object-fit: cover;
-            border-radius: 8px; 
+
+        .input-group input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .input-group input:focus {
+            border-color: #0288d1;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: #1976d2;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
             margin-top: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-submit:hover {
+            background: #1565c0;
+        }
+
+        /* หน้าผลลัพธ์ (หน้าฮา) */
+        #result-page {
+            display: none;
+            padding: 20px;
+        }
+
+        .result-title {
+            color: #d32f2f;
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .result-desc {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .classroom-img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            margin-bottom: 15px;
+        }
+
+        .btn-back {
+            background: #757575;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
 
-    <!-- หน้าที่ 1: หน้าฟอร์มหลอก -->
-    <div id="page1" class="card">
-        <h2>ระบบตรวจสอบผลการเรียน</h2>
-        <p style="color: #666; font-size: 13px; margin-bottom: 20px;">กรุณากรอกข้อมูลเพื่อเข้าสู่ระบบ</p>
-        <form id="checkForm">
-            <div class="input-group">
-                <label for="studentId">รหัสนักเรียน</label>
-                <input type="number" id="studentId" placeholder="เช่น 12345" required>
+    <div class="container">
+        <!-- หน้า 1: กรอกรหัส -->
+        <div id="search-page">
+            <div class="header">
+                <div class="lotus-icon">🪷</div>
+                <div class="title-green">DoGrade 2569</div>
+                <div class="title-sub">มุกดาหาร</div>
+                
+                <div class="welcome-box">
+                    Welcome Back to School 2568<br>
+                    ระบบ DoGrade2567 Online<br>
+                    เพื่อการตรวจสอบผลการเรียนและการติดต่องานทะเบียน 24 ชั่วโมง<br>
+                    <small>หากมีข้อสงสัยผลการเรียนให้ติดต่อครูผู้สอนประจำวิชา .....</small>
+                </div>
             </div>
-            <div class="input-group">
-                <label for="dob">วัน/เดือน/ปี เกิด</label>
-                <input type="date" id="dob" required>
-            </div>
-            <button type="submit">ค้นหาข้อมูล</button>
-        </form>
-    </div>
 
-    <!-- หน้าที่ 2: แสดงรูปเมสซี่จูบถ้วย -->
-    <div id="page2" class="card hidden">
-        <h2 style="color: #2e7d32; margin-bottom: 5px;">🏆 GOAT 🇦🇷</h2>
-        <p style="color: #555; margin-top: 0; font-size: 14px;">ยินดีด้วย! คุณพบกับแชมป์โลกตัวจริง</p>
-        
-        <!-- รูปเมสซี่จูบถ้วยฟุตบอลโลก -->
-         <img src="https://i.imgur.com/vHq7jC2.jpg" alt="Lionel Messi World Cup" class="messi-img">
-button onclick="location.reload()" style="background-color: #757575;">กลับหน้าแรก</button>
+            <div class="form-section">
+                <div class="form-title">
+                    🎓 บันทึกรหัสที่ขอ DoGrade
+                </div>
+                
+                <form onsubmit="showResult(event)">
+                    <div class="input-group">
+                        <label>รหัสนักเรียน / ผู้ปกครอง:</label>
+                        <input type="text" placeholder="XXXXXXX" required>
+                    </div>
+                    <div class="input-group">
+                        <label>วันเกิดนักเรียน:</label>
+                        <input type="text" placeholder="วว/ดด/ปปปป" required>
+                    </div>
+                    <button type="submit" class="btn-submit">ตรวจสอบผลการเรียน</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- หน้า 2: หน้าเฉลย/แกล้ง -->
+        <div id="result-page">
+            <div class="result-title">⚠️ ไม่พบผลการเรียน!</div>
+            <div class="result-desc">เกรดของคุณถูกลบออกจากระบบแล้ว...<br>กรุณาซ้ำชั้นที่ห้องนี้ครับ 😭</div>
+            
+            <!-- รูปห้องเรียนไม้ -->
+            <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=1000&auto=format&fit=crop" alt="ห้องเรียนว่างเปล่า" class="classroom-img">
+
+            <button class="btn-back" onclick="goBack()">กลับหน้าแรก</button>
+        </div>
     </div>
 
     <script>
-        document.getElementById('checkForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // ป้องกันไม่ให้รีเฟรชหน้า
-            document.getElementById('page1').classList.add('hidden');
-            document.getElementById('page2').classList.remove('hidden');
-        });
-    </script>
+        function showResult(e) {
+            e.preventDefault();
+            document.getElementById('search-page').style.style.display = 'none';
+            document.getElementById('search-page').style.display = 'none';
+            document.getElementById('result-page').style.display = 'block';
+        }
 
+        function goBack() {
+            document.getElementById('result-page').style.display = 'none';
+            document.getElementById('search-page').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
